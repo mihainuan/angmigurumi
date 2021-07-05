@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,22 +9,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   //Array of photos
-  photos = 
-  [
-    {
-      URL:'https://i.imgur.com/C2F5Y6X.jpeg',
-      description:'Yoshi Amigurumi',
-      title:'Yoshi Amigurumi'
-    },
-    {
-      URL:'https://i.imgur.com/dUkgQMN.jpeg',
-      description:'Please Wash your Hands',
-      title:'Doctor'
-    },
-    {
-      URL:'https://i.imgur.com/GFv5bBP.jpeg',
-      description:'Amigurumi for my SILs baby due in a couple of months!',
-      title:'Amigurumi Baby'
-    }
-  ]
+  photos: Object[] = []
+  
+  constructor(private http: HttpClient){
+      const observable = http
+      .get<Object[]>('http://localhost:3000/flavio/photos')
+      .subscribe(photos => 
+        this.photos = photos,
+        err => console.log("Erro -> ",err.message)
+      );
+  }
 }
