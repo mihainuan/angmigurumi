@@ -6,7 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular Amigurummi APP';
-  description = 'Amigurumi';
-  URL = 'http://euroroma.com.br/blog/wp-content/uploads/2020/09/amigurumi-macaco.png';
+
+  //Array of photos
+  photos = 
+  [
+    {
+      URL:'https://i.imgur.com/C2F5Y6X.jpeg',
+      description:'Yoshi Amigurumi',
+      title:'Yoshi Amigurumi'
+    },
+    {
+      URL:'https://i.imgur.com/dUkgQMN.jpeg',
+      description:'Please Wash your Hands',
+      title:'Doctor'
+    },
+    {
+      URL:'https://i.imgur.com/GFv5bBP.jpeg',
+      description:'Amigurumi for my SILs baby due in a couple of months!',
+      title:'Amigurumi Baby'
+    }
+  ]
 }
