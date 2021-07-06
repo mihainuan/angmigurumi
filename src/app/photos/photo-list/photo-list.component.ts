@@ -13,6 +13,10 @@ export class PhotoListComponent implements OnInit {
   //Array of photos
   photos: Photo[] = [];
 
+  //Search string
+  filter: string = '';
+  name: string = 'Mihai or Nuan?'
+  
   //Exclusive for Dependency Injection (Convention/Best Practices)
   constructor(
     private photoService: PhotoService,
@@ -24,6 +28,7 @@ export class PhotoListComponent implements OnInit {
     this.photoService.listFromUser(userName)
       .subscribe(photos => {
         this.photos = photos
+        console.log("Photos -> ",photos)
         },
         err => console.log("Erro -> ",err.message)
       );
