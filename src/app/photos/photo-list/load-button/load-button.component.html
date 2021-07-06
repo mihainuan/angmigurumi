@@ -1,0 +1,7 @@
+<div class="text-center" *ngIf="hasMore; else variavelTemplate">
+  <button class="btn btn-warning btn-block btn-large">Load more Photos</button>
+</div>
+
+<ng-template #variavelTemplate>
+<p class="text-center text-muted">No more photos to load</p>
+</ng-template>
