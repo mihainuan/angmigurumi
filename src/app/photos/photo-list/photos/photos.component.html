@@ -2,11 +2,16 @@
 <p class="text-center text-muted" *ngIf="!photos.length">
   Sorry, mihai did not found your photos...
 </p>
+
 <ol class="list-unstyled">
   <li *ngFor="let cols of rows" class="row no-gutters">
-    <div  *ngFor="let photo of cols" class="col-4">
+    <div  *ngFor="let photo of cols" class="col-4" >
     <ap-card [title]="photo.description" >
+    <div class="text-center">
+      {{photo.postDate | date:'medium'}}
+    </div>
     <ap-photo 
+      apDarkenOnHover
       [url]="photo.url" 
       [description]="photo.description" 
       [title]="photo.title">
