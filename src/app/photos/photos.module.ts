@@ -5,13 +5,16 @@ import { NgModule } from '@angular/core';
 
 //Custom imports
 import { PhotoComponent } from './photo/photo.component';
-import { PhotosListComponent } from './photos-list/photos-list.component';
+import { PhotoListComponent } from './photo-list/photo-list.component';
 import { PhotoFormComponent } from './photo-form/photo-form.component';
+import { PhotosComponent } from './photo-list/photos/photos.component';
 
 @NgModule({
     declarations: [
         PhotoComponent, 
-        PhotosListComponent, PhotoFormComponent 
+        PhotoListComponent, 
+        PhotoFormComponent, 
+        PhotosComponent 
     ],
     imports: [ 
         HttpClientModule,
