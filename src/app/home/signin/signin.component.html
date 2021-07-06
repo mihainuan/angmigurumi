@@ -1,6 +1,6 @@
 <h4 class="text-center">Loggin</h4>
 
-<form [formGroup]="loginForm" class="form mt-4">
+<form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
     <!-- User Name Field -->
     <div class="form-group">
         <input 
@@ -18,14 +18,14 @@
     <!-- Password Field -->
     <div class="form-group">
         <input
-            formControlName="passWord"
+            formControlName="password"
             type="password" 
             class="form-control" 
             placeholder="password">
             
         <ap-vmessage 
         text="Your Pass Word is REQUIRED!"
-        *ngIf="loginForm.get('passWord').errors?.required">
+        *ngIf="loginForm.get('password').errors?.required">
         </ap-vmessage>
 
     </div>
