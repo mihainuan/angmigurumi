@@ -6,12 +6,12 @@
 
         <div *ngIf="(user$ | async) as user; else login">
             <i class="fa fa-user-circle-o fa-2x"></i>
-            <a class="mr-2"> {{ user.name }} </a>
+            <a (click)="logout()" class="mr-2"> {{ user.name | titlecase }} (Log Me Out) </a>
         </div>
 
         <ng-template #login>
             <span class="navbar-text">
-                <i><s>Any user is logged</s></i>
+                <a [routerLink]="['']"><i>Please, Login!</i></a>
             </span>
         </ng-template>
 
