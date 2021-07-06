@@ -1,37 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { Photo } from '../photo/photo';
-import { PhotoService } from '../photo/photo.service';
 
 @Component({
   selector: 'ap-photo-list',
   templateUrl: './photo-list.component.html',
   styleUrls: ['./photo-list.component.css']
 })
-export class PhotoListComponent implements OnInit { 
+export class PhotoListComponent implements OnInit, OnDestroy { 
   
-  //Array of photos
+  //Array of photos (empty)
   photos: Photo[] = [];
 
   //Search string
   filter: string = '';
-  name: string = 'Mihai or Nuan?'
+  debounce: Subject<string> = new Subject<string>();
   
-  //Exclusive for Dependency Injection (Convention/Best Practices)
-  constructor(
-    private photoService: PhotoService,
-    private activatedRoute: ActivatedRoute){}
-
   //Occurs after 1st instance in Angular 
   ngOnInit(): void {
-    const userName = this.activatedRoute.snapshot.params.userName;
-    this.photoService.listFromUser(userName)
-      .subscribe(photos => {
-        this.photos = photos
-        console.log("Photos -> ",photos)
-        },
-        err => console.log("Erro -> ",err.message)
-      );
+    this.photos = this.activatedRoute.snapshot.data['photos'];    
+    this.debounce
+    .pipe(debounceTime(420))
+    .subscribe(filter => this.filter = filter);
+  }
+
+  //Exclusive for Dependency Injection (Convention/Best Practices)
+  constructor(private activatedRoute: ActivatedRoute){}
+  ngOnDestroy(): void {
+    this.debounce.unsubscribe();
   }
 
 }
