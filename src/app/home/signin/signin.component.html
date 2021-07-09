@@ -35,11 +35,9 @@
         [disabled]="loginForm.invalid"
         type="submit" 
         class="btn btn-primary btn-block">
-        Logg Me Inn
+        Log in
     </button>
 
 </form>
-
-<p>Not a user yet?<a>
 <br>
-Register yourself NOW!</a></p>
+<p>Not a user yet?<a [routerLink]="['signup']"> Register Here!</a></p>
