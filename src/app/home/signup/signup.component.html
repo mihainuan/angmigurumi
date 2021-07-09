@@ -1,13 +1,13 @@
 <h4 class="text-center"> Register to Angmigurumi - APP!</h4>
 
-<form [formGroup]="signupForm" class="form mt-4">
+<form [formGroup]="signupForm" class="form mt-4" (submit)="signup()">
     <div class="form-group">
-        <input formControlName="emailAddress" placeholder="your email" class="form-control" autofocus  autocomplete="off" >
+        <input formControlName="email" placeholder="your email" class="form-control" autofocus  autocomplete="off" >
         <ap-vmessage text="Your E-Mail Address is REQUIRED!"
-        *ngIf="signupForm.get('emailAddress').errors?.required">
+        *ngIf="signupForm.get('email').errors?.required">
         </ap-vmessage>
         <ap-vmessage text="VALID E-Mail Address REQUIRED!"
-        *ngIf="signupForm.get('emailAddress').errors?.email">
+        *ngIf="signupForm.get('email').errors?.email">
         </ap-vmessage>
     </div>
     
