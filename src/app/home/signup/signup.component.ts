@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
 import { lowerCaseCustomValidator } from 'src/app/shared/validators/lower-case.validator';
 import { ExistingUserNameValidatorService } from './existing-user.validator.service';
 import { NewUser } from './new-user';
@@ -12,12 +13,14 @@ import { SignUpService } from './signup.service';
 export class SignUpComponent implements OnInit{
 
     signupForm: FormGroup;
+    @ViewChild('emailInput') emailInput: ElementRef<HTMLInputElement>;
 
     constructor (
         private formBuilder: FormBuilder,
         private existingUserNameValidatorService: ExistingUserNameValidatorService,
         private signUpService: SignUpService,
-        private router: Router
+        private router: Router ,
+        private platformDetectorService: PlatformDetectorService
         ){
         this.ngOnInit();
     }
@@ -54,6 +57,10 @@ export class SignUpComponent implements OnInit{
                 ]
             ],
         })
+        this.platformDetectorService.isPlatformBrowser() 
+        //TODO: Consertar erro após solução (forum)
+        //FIXME: Erro this.emailInput está undefined
+        // && this.emailInput.nativeElement.focus();
     }
 
     signup(){

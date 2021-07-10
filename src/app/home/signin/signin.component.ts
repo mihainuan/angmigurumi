@@ -25,14 +25,13 @@ export class SignInComponent implements OnInit{
             userName: ['', Validators.required],
             password: ['', Validators.required]
         });
+        this.platformDetectorService.isPlatformBrowser() &&
+        this.userNameInput.nativeElement.focus();
     }
 
-    login() {        
-        console.log("Go-To -> Authentication...");
-
+    login() {
         const userName = this.loginForm.get('userName').value;
-        const password = this.loginForm.get('password').value;
-        
+        const password = this.loginForm.get('password').value;        
         this.authService
         .authenticate(userName,password)
         .subscribe( 
@@ -43,8 +42,6 @@ export class SignInComponent implements OnInit{
                 this.userNameInput.nativeElement.focus(); //Element from DOM
             console.log(err.error.message);
             alert(err.error.message); //Msg on screen
-        });
-        
+        });        
     }
-
 }
