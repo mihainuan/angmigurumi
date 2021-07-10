@@ -1,42 +1,43 @@
-<h4 class="text-center">Loggin</h4>
-
-<form [formGroup]="loginForm" class="form mt-4">
+<h2 class="text-center title">Welcome to AngMIGURUMii!</h2>
+<br>
+<form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
     <!-- User Name Field -->
     <div class="form-group">
         <input 
+        #userNameInput
             formControlName="userName"
             class="form-control" 
             placeholder="user name" 
             autofocus>
-        <small         
-        *ngIf="loginForm.get('userName').errors?.required"
-        class="text-danger d-block mt-2">
-            Your User Name is REQUIRED!
-        </small>
+            
+        <ap-vmessage 
+            text="Your User Name is REQUIRED!"
+            *ngIf="loginForm.get('userName').errors?.required">
+        </ap-vmessage>
+
     </div>
     <!-- Password Field -->
     <div class="form-group">
         <input
-            formControlName="passWord"
+            formControlName="password"
             type="password" 
             class="form-control" 
-            placeholder="password">   
-        <small         
-        *ngIf="loginForm.get('passWord').errors?.required"
-        class="text-danger d-block mt-2">
-            Your Pass Word is REQUIRED!
-        </small>        
+            placeholder="password">
+            
+        <ap-vmessage 
+        text="Your Pass Word is REQUIRED!"
+        *ngIf="loginForm.get('password').errors?.required">
+        </ap-vmessage>
+
     </div>
     <!-- Login Button -->
     <button 
         [disabled]="loginForm.invalid"
         type="submit" 
         class="btn btn-primary btn-block">
-        Submit & LOGIN
+        Log in
     </button>
 
 </form>
-
-<p>Not a user yet?<a>
 <br>
-Register yourself NOW!</a></p>
+<p>Not a user yet?<a [routerLink]="['signup']"> Register Here!</a></p>
