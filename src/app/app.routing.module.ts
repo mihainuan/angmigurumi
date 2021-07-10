@@ -9,6 +9,8 @@ import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list-resolver';
 import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 
+
+//TODO: Organizando Rotas e Implementando Lazy Loading
 const routes: Routes = [
     { 
         path: '', 
