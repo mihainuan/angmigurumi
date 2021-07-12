@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
@@ -11,7 +11,7 @@ import { SignUpService } from './signup.service';
     templateUrl: './signup.component.html',
     providers: [ ExistingUserNameValidatorService ]
 })
-export class SignUpComponent implements OnInit{
+export class SignUpComponent implements OnInit, AfterViewInit{
 
     signupForm: FormGroup;
     @ViewChild('emailInput') emailInput: ElementRef<HTMLInputElement>;
@@ -58,10 +58,11 @@ export class SignUpComponent implements OnInit{
                 ]
             ],
         })
-        this.platformDetectorService.isPlatformBrowser() 
-        //TODO: Consertar erro após solução (forum)
-        //FIXME: Erro this.emailInput está undefined
-        // && this.emailInput.nativeElement.focus();
+    }
+    
+    ngAfterViewInit(): void {
+        this.platformDetectorService.isPlatformBrowser()
+        && this.emailInput.nativeElement.focus();
     }
 
     signup(){
