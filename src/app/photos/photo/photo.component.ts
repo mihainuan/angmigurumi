@@ -12,7 +12,8 @@ export class PhotoComponent {
     @Input() description = '';
     @Input() set url(url: string) {
         if(!url.startsWith('data')){
-            // this.url = CLOUD_URL + url; FIXME: Adequar carregamento de foto
+            // FIXME: Adequar carregamento de foto
+            // this.url = CLOUD_URL + url;
         }
         this._url = url;
     }
