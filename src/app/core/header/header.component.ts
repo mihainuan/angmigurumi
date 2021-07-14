@@ -10,14 +10,14 @@ import { UserService } from '../user/user.service';
 export class HeaderComponent {
 
     user$: Observable<User>;
-    user: User;
+    currentUser: User;
 
     constructor(
         private userService: UserService,
         private router: Router
         ) {
         this.user$ = userService.getUser();
-        this.user$.subscribe(user => this.user = user);
+        this.user$.subscribe(user => this.currentUser = user);
     }
 
     logout() {

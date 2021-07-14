@@ -13,3 +13,4 @@ export class PhotoFormComponent implements OnInit {
   }
 
 }
+  

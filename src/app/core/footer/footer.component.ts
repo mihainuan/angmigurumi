@@ -10,9 +10,11 @@ import { UserService } from './../user/user.service';
 export class FooterComponent implements OnInit {
 
     user$: Observable<User>; // Se termina em $ é um OBSERVABLE
+    currentUser: User;
     constructor(private userService: UserService) {}
 
     ngOnInit(): void {
         this.user$ = this.userService.getUser();
+        this.user$.subscribe(user => this.currentUser = user);
     }
 }

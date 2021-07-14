@@ -22,7 +22,7 @@ const routes: Routes = [
         resolve: { photos: PhotoListResolver}
     },
     {
-        path: 'p/form',
+        path: 'p/:userName/add',
         component: PhotoFormComponent
     },
     {
