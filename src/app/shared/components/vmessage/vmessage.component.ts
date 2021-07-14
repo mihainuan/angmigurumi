@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'ap-vmessage',
+    selector: 'amg-vmessage',
     templateUrl: './vmessage.component.html'
 })
 export class VMessageComponent {

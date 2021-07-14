@@ -10,10 +10,10 @@
             placeholder="user name" 
             autofocus>
             
-        <ap-vmessage 
+        <amg-vmessage 
             text="Your User Name is REQUIRED!"
             *ngIf="loginForm.get('userName').errors?.required">
-        </ap-vmessage>
+        </amg-vmessage>
 
     </div>
     <!-- Password Field -->
@@ -24,10 +24,10 @@
             class="form-control" 
             placeholder="password">
             
-        <ap-vmessage 
+        <amg-vmessage 
         text="Your Pass Word is REQUIRED!"
         *ngIf="loginForm.get('password').errors?.required">
-        </ap-vmessage>
+        </amg-vmessage>
 
     </div>
     <!-- Login Button -->

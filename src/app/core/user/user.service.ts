@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { TokenService } from '../token/token.service';
 import { User } from './user';
-import * as jwt_decode from 'jwt-decode'
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({ providedIn: 'root'})
 export class UserService {
@@ -11,27 +11,28 @@ export class UserService {
     private userName: string;
 
     constructor(private tokenService: TokenService) {
+        // tslint:disable-next-line: no-unused-expression
         this.tokenService.hasToken() &&
-            this.decodeAndNotify();
+        this.decodeAndNotify();
     }
 
-    setToken(token: string){
+    setToken(token: string) {
         this.tokenService.setToken(token);
         this.decodeAndNotify();
     }
 
-    getUser(){
+    getUser() {
         return this.userSubject.asObservable();
     }
 
-    private decodeAndNotify(){
+    private decodeAndNotify() {
         const token = this.tokenService.getToken();
         const user = jwt_decode(token) as User;
         this.userName = user.name;
         this.userSubject.next(user);
     }
 
-    logout(){
+    logout() {
         this.tokenService.trashToken();
         this.userSubject.next(null);
     }
@@ -40,7 +41,7 @@ export class UserService {
         return this.tokenService.hasToken();
     }
 
-    getUserName(){
+    getUserName() {
         return this.userName;
     }
 

@@ -1,12 +1,12 @@
 
-<ap-search 
+<amg-search 
 (onTyping)="filter = $event"
 [value]="filter">
-</ap-search>
+</amg-search>
 
-<ap-photos [photos]="photos | filterByDescription: filter"></ap-photos>
+<amg-photos [photos]="photos | filterByDescription: filter"></amg-photos>
 
-<ap-load-button 
+<amg-load-button 
 (click)="load()" 
 [hasMore]="hasMore">
-</ap-load-button>
+</amg-load-button>

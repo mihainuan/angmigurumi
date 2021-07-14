@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../user/user';
 import { UserService } from '../user/user.service';
 @Component({
-    selector: 'ap-header',
+    selector: 'amg-header',
     templateUrl: './header.component.html'
 })
 export class HeaderComponent {
@@ -15,12 +15,12 @@ export class HeaderComponent {
     constructor(
         private userService: UserService,
         private router: Router
-        ){
+        ) {
         this.user$ = userService.getUser();
         this.user$.subscribe(user => this.user = user);
     }
 
-    logout(){
+    logout() {
         this.userService.logout();
         this.router.navigate(['']);
     }
