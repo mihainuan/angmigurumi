@@ -38,7 +38,7 @@ export class SignInComponent implements OnInit, AfterViewInit{
         this.authService
         .authenticate(userName,password)
         .subscribe( 
-            () => this.router.navigate(['p', userName]), // p/username
+            () => this.router.navigate(['user', userName]), // user/username
         err => {
             this.loginForm.reset(); //Clear Form
             this.platformDetectorService.isPlatformBrowser() && 
