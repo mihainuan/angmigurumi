@@ -11,13 +11,13 @@
           {{photo.postDate | date:'medium'}}
         </div>
         <a [routerLink]="['/p', photo.id]">
-        <amg-photo 
+          <amg-photo 
               apDarkenOnHover
               [url]="photo.url" 
               [description]="photo.description" 
               [title]="photo.title"
-            >
-            </amg-photo>
+          >
+          </amg-photo>
           </a>
           <div class="text-center">
           <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2"></i>{{ photo.likes }}
