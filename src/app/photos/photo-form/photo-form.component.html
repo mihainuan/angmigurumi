@@ -1,21 +1,31 @@
 <div class="container">
   <form [formGroup]="photoForm" class="row" (submit)="upload()">
     <div class="col-md-6 text-center">
-    <button type="button" (click)="fileInput.click()" class="btn btn-primary">
-        <i class="fa fa-image fa-4x align-middle"></i>
-    </button>
-      <input 
-        #fileInput
-        hidden
-        type="file" 
-        accept="image/*" 
-        formControlName="file"
-        (change)="file = $event.target.files[0]"
-      >
-      <amg-vmessage
-        text="Please select your pictue!"
-        *ngIf="photoForm.get('file').errors?.required"
-      ></amg-vmessage>
+      <div class="form-group" *ngIf="!preview else previewImage">
+        <button type="button" (click)="fileInput.click()" class="btn btn-primary">
+            <i class="fa fa-image fa-4x align-middle"></i>
+        </button>
+
+          <input 
+            #fileInput
+            hidden
+            type="file" 
+            accept="image/*" 
+            formControlName="file"
+            (change)="handleFile($event.target.files[0])"
+          >
+          <amg-vmessage
+            text="Please select your pictue!"
+            *ngIf="photoForm.get('file').errors?.required"
+          ></amg-vmessage>
+      </div>
+
+      <ng-template #previewImage>
+        <div>
+          <amg-photo [url]="preview" title="Preview before upload"></amg-photo>
+        </div>
+      </ng-template>
+
     </div>
 
     <div class="col-md-6">
