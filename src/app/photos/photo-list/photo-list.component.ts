@@ -22,7 +22,6 @@ export class PhotoListComponent implements OnInit {
   // Occurs after 1st instance in Angular
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      alert('Welcome to ' + params.userName + '\'s list!');
       this.userName = params.userName;
       this.photos = this.activatedRoute.snapshot.data['photos'];
     });

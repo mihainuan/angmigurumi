@@ -6,11 +6,14 @@ import { PhotoCommentsComponent } from './photo-comments/photo-comments.componen
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VmessageModule } from 'src/app/shared/components/vmessage/vmessage.module';
+import { PhotoOwnershipDirective } from './photo-ownership/photo-ownership.directive';
+import { ShowIfLoggedModule } from 'src/app/shared/directives/show-if-logged/show-if-logged.module';
 
 @NgModule({
     declarations: [
         PhotoDetailsComponent,
-        PhotoCommentsComponent
+        PhotoCommentsComponent,
+        PhotoOwnershipDirective
     ],
     exports: [
         PhotoDetailsComponent,
@@ -21,7 +24,8 @@ import { VmessageModule } from 'src/app/shared/components/vmessage/vmessage.modu
         PhotoModule, // Fotos
         RouterModule, // Roteador
         ReactiveFormsModule, // Módulo de Forms Reativos
-        VmessageModule // Módulo de Mensagens de (erro) validação
+        VmessageModule, // Módulo de Mensagens de (erro) validação
+        ShowIfLoggedModule // Diretiva para exibir apenas se o usuário estiver logado
     ]
 })
 export class PhotoDetailsModule { }
