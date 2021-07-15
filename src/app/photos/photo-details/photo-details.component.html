@@ -13,7 +13,7 @@
               <br>
               <br>
               <i class="fa fa-calendar-o fa-2x mr-2 ml-2 pull-left"> {{photo.postDate | date: 'medium'}}</i>
-              <i (click)="remove()" class="fa fa-trash-o fa-2x ml-2 pull-right"></i>
+              <i photoOwnership [ownedPhoto]="photo" (click)="remove()" class="fa fa-trash-o fa-2x ml-2 pull-right"></i>
               <br>
             </div>
             <hr>
