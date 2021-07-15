@@ -6,21 +6,26 @@
   
       <div class="col-lg-4 p-4">
         <small>
-            <h4 class="card-header text-left break-word">{{photo.description}}</h4>
-            <hr>
-            <h6 class="card-header text-left break-word">{{photo.postDate | date: 'medium'}}</h6>
+          <h2 class="text-left break-word">{{photo.description}}</h2>
+            <div class="text-left mb-4">
+              <hr>
+              <i class="fa fa-comment-o fa-2x mr-2 ml-2"> {{photo.comments}}</i>
+              <br>
+              <br>
+              <i class="fa fa-calendar-o fa-2x mr-2 ml-2 pull-left"> {{photo.postDate | date: 'medium'}}</i>
+              <i (click)="remove()" class="fa fa-trash-o fa-2x ml-2 pull-right"></i>
+              <br>
+            </div>
             <hr>
         </small>
-        <div class="mt-4">
-          <form>
-            <div class="input-group">
-              <textarea class="form-control"></textarea>
-              <div class="input-group-append">
-                <button class="btn btn-primary pull-left">Publish</button>
-              </div>
-            </div>
-          </form>
-        </div>
+
+        <amg-photo-comments 
+        *ngIf="photo.allowComments; else commentNotAllowed"
+        [photoId]="photoId"
+        ></amg-photo-comments>
+        <ng-template #commentNotAllowed>
+          <h2>User has disabled comments for this photo 😢</h2>
+        </ng-template>
       </div>
-    </div>
+    </div> 
   </div>
