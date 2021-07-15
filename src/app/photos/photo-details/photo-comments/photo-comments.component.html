@@ -1,8 +1,7 @@
-
-
 <div *ngIf="(comments$ | async) as comments">
     <ul class="list-unstyled comment-list">
         <li *ngFor="let comment of comments">
+            <h5> All Photo Comments:</h5>
             <a class="text-dark font-weight-bold mr-1" [routerLink]="['/user', comment.userName]">
                 {{ comment.userName }}
             </a>
