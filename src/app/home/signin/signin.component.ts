@@ -23,7 +23,7 @@ export class SignInComponent implements OnInit, AfterViewInit {
     ) {}
 
     ngOnInit(): void {
-        this.titleService.setTitle('Login - AngMigurumi');
+        // this.titleService.setTitle('Login - AngMigurumi');
         this.loginForm = this.formBuilder.group({
             userName: ['', Validators.required],
             password: ['', Validators.required]

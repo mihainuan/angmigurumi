@@ -16,11 +16,17 @@ const routes: Routes = [
         [
             {
                 path: '',
-                component: SignInComponent
+                component: SignInComponent,
+                data: {
+                    title: 'Sign IN - AngMigurumi'
+                }
             },
             {
                 path: 'signup',
-                component: SignUpComponent
+                component: SignUpComponent,
+                data: {
+                    title: 'Sign UP - AngMigurumi'
+                }
             }
         ]
     }
