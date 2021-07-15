@@ -11,7 +11,7 @@ import { DarkenOnHoverModule } from '../shared/directives/darken-on-hover/darken
 import { PhotoDetailsModule } from './photo-details/photo-details.module';
 
 @NgModule({
-    imports: [ 
+    imports: [
     PhotoModule,
     PhotoFormModule,
     PhotoListModule,

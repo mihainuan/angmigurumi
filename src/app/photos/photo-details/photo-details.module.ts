@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { PhotoModule } from '../photo/photo.module';
 
 @NgModule({
-    declarations: [PhotoDetailsComponent],
-    exports: [PhotoDetailsComponent],
+    declarations: [ PhotoDetailsComponent ],
+    exports: [ PhotoDetailsComponent ],
     imports: [
-        CommonModule,
+        CommonModule, // Is a good practice to always include Common Module in our custom Modules
         PhotoModule
     ]
 })

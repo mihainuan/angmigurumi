@@ -13,13 +13,13 @@ export class DarkenOnHoverDirective {
     ) {}
 
     @HostListener('mouseover')
-    darkenOn(){
-        this.render2.setStyle(this.el.nativeElement,'filter',`brightness(${this.brightness})`);
+    darkenOn() {
+        this.render2.setStyle(this.el.nativeElement, 'filter', `brightness(${this.brightness})`);
     }
-    
+
     @HostListener('mouseleave')
-    darkenOff(){
-        this.render2.setStyle(this.el.nativeElement,'filter','brightness(100%)');        
+    darkenOff() {
+        this.render2.setStyle(this.el.nativeElement, 'filter', 'brightness(100%)');
     }
 
 }
