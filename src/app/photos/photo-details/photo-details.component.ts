@@ -44,8 +44,20 @@ export class PhotoDetailsComponent implements OnInit {
         },
         err => {
             console.log(err);
-            this.alertService.warning('Photo could not be removed. Please try again.', true);
+            this.alertService.danger('Photo could not be removed. Please try again.', true);
         });
     }
 
+    like(photo: Photo) {
+        this.photoService
+        .like(photo.id)
+        .subscribe(liked => {
+            if (liked) {
+                this.photo$ = this.photoService.findById(photo.id);
+                this.alertService.success('successfully liked!', true);
+            } else {
+                this.alertService.warning('You\'ve already liked!', true);
+            }
+        });
+    }
 }
