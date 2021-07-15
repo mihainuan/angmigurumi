@@ -21,8 +21,11 @@ export class PhotoListComponent implements OnInit {
 
   // Occurs after 1st instance in Angular
   ngOnInit(): void {
-    this.userName = this.activatedRoute.snapshot.params.userName;
-    this.photos = this.activatedRoute.snapshot.data['photos'];
+    this.activatedRoute.params.subscribe(params => {
+      alert('Welcome to ' + params.userName + '\'s list!');
+      this.userName = params.userName;
+      this.photos = this.activatedRoute.snapshot.data['photos'];
+    });
   }
 
   // Exclusive for Dependency Injection (Convention/Best Practices)
