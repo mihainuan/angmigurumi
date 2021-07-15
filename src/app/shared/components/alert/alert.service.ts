@@ -11,7 +11,7 @@ export class  AlertService {
 
     constructor(router: Router) {
         router.events.subscribe( event => {
-            if (event instanceof NavigationStart){
+            if (event instanceof NavigationStart) {
                 if (this.keepAfterRouteChange) {
                     this.keepAfterRouteChange = false;
                 } else {
