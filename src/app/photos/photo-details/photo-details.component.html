@@ -11,16 +11,7 @@
             <h6 class="card-header text-left break-word">{{photo.postDate | date: 'medium'}}</h6>
             <hr>
         </small>
-        <div class="mt-4">
-          <form>
-            <div class="input-group">
-              <textarea class="form-control"></textarea>
-              <div class="input-group-append">
-                <button class="btn btn-primary pull-left">Publish</button>
-              </div>
-            </div>
-          </form>
-        </div>
+        <amg-photo-comments [photoId]="photoId"></amg-photo-comments>
       </div>
     </div>
   </div>

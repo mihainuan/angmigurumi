@@ -34,7 +34,7 @@ export class PhotoService {
 
     getComments(photoId: number) {
         return this.http.get<PhotoComment[]>(
-            API + '/photos/' + photoId + 'comments'
+            API + '/photos/' + photoId + '/comments'
         );
     }
 }
