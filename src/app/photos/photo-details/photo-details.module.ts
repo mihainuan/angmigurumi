@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { PhotoModule } from '../photo/photo.module';
 import { PhotoCommentsComponent } from './photo-comments/photo-comments.component';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { VmessageModule } from 'src/app/shared/components/vmessage/vmessage.module';
 
 @NgModule({
     declarations: [
@@ -12,11 +14,14 @@ import { RouterModule } from '@angular/router';
     ],
     exports: [
         PhotoDetailsComponent,
-        PhotoCommentsComponent ],
+        PhotoCommentsComponent
+    ],
     imports: [
         CommonModule, // Is a good practice to always include Common Module in our custom Modules
-        PhotoModule,
-        RouterModule
+        PhotoModule, // Fotos
+        RouterModule, // Roteador
+        ReactiveFormsModule, // Módulo de Forms Reativos
+        VmessageModule // Módulo de Mensagens de (erro) validação
     ]
 })
 export class PhotoDetailsModule { }
