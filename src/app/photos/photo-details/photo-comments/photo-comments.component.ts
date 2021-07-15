@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
+import { AlertService } from 'src/app/shared/components/alert/alert.service';
 
 import { PhotoComment } from './../../photo/photo-comment';
 import { PhotoService } from './../../photo/photo.service';
@@ -20,7 +21,8 @@ export class PhotoCommentsComponent implements OnInit {
 
     constructor(
         private photoService: PhotoService,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private alertService: AlertService
         ) {}
 
     ngOnInit(): void {
@@ -37,7 +39,7 @@ export class PhotoCommentsComponent implements OnInit {
             .pipe(switchMap(() => this.photoService.getComments(this.photoId)))
             .pipe(tap(() => {
                 this.commentForm.reset();
-                alert('Comentario adicionado com Sucesso!!');
+                this.alertService.success('Commend sent successfully!', true);
             }));
     }
 }

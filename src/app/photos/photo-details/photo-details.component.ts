@@ -8,7 +8,6 @@ import { PhotoComment } from './../photo/photo-comment';
 import { AlertService } from 'src/app/shared/components/alert/alert.service';
 import { UserService } from 'src/app/core/user/user.service';
 
-
 @Component({
     templateUrl: './photo-details.component.html'
 })
