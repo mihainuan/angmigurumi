@@ -8,7 +8,8 @@ import { PhotoComment } from './../../photo/photo-comment';
 import { PhotoService } from './../../photo/photo.service';
 @Component({
     selector: 'amg-photo-comments',
-    templateUrl: './photo-comments.component.html'
+    templateUrl: './photo-comments.component.html',
+    styleUrls: ['photo-comments.css']
 })
 
 export class PhotoCommentsComponent implements OnInit {
@@ -30,7 +31,6 @@ export class PhotoCommentsComponent implements OnInit {
     }
 
     save() {
-        console.log('Saving...');
         const comment = this.commentForm.get('comment').value as string;
         this.comments$ = this.photoService
             .addComment(this.photoId, comment)
