@@ -1,0 +1,26 @@
+<div class="bg-white border" *ngIf="(photo$ | async) as photo">
+    <div class="row">
+      <div class="col-lg-8">
+        <amg-photo [url]="photo.url" [description]="photo.description"></amg-photo>
+      </div>    
+  
+      <div class="col-lg-4 p-4">
+        <small>
+            <h4 class="card-header text-left break-word">{{photo.description}}</h4>
+            <hr>
+            <h6 class="card-header text-left break-word">{{photo.postDate | date: 'medium'}}</h6>
+            <hr>
+        </small>
+        <div class="mt-4">
+          <form>
+            <div class="input-group">
+              <textarea class="form-control"></textarea>
+              <div class="input-group-append">
+                <button class="btn btn-primary pull-left">Publish</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
