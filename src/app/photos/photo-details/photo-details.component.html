@@ -11,7 +11,13 @@
             <h6 class="card-header text-left break-word">{{photo.postDate | date: 'medium'}}</h6>
             <hr>
         </small>
-        <amg-photo-comments [photoId]="photoId"></amg-photo-comments>
+        <amg-photo-comments 
+        *ngIf="photo.allowComments; else commentNotAllowed"
+        [photoId]="photoId"
+        ></amg-photo-comments>
+        <ng-template #commentNotAllowed>
+          <h2>User has disabled comments for this photo 😢</h2>
+        </ng-template>
       </div>
-    </div>
+    </div> 
   </div>
