@@ -22,6 +22,7 @@ export class PhotoListComponent implements OnInit {
 
   // Occurs after 1st instance in Angular
   ngOnInit(): void {
+    // FIXME: loading bar does not stop showing
     this.loadingService.start();
     this.activatedRoute.params.subscribe(params => {
       this.userName = params.userName;
