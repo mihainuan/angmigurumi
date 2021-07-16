@@ -50,7 +50,6 @@ export class PhotoFormComponent implements OnInit {
       (event: HttpEvent<any>) => {
         if ( event.type === HttpEventType.UploadProgress) {
           this.percentDone = Math.round(100 * event.loaded / event.total);
-          console.log(this.percentDone + '%');
         } else if (event instanceof HttpResponse) {
           this.alertService.success('Upload completed successfully!', true);
           this.router.navigate(['/user', this.userService.getUserName()]);
@@ -58,7 +57,7 @@ export class PhotoFormComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.alertService.danger('Upload Error', true);
+        this.alertService.danger('Upload Error. Please try again.', true);
       });
   }
 
