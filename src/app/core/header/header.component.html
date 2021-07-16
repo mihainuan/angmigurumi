@@ -2,7 +2,7 @@
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"><strong>AngMIGURUMii</strong></a>
         
-        <div *ngIf="(user$ | async) as user; else login">
+        <div *ngIf="(user$ | async ) as user; else login">
             <i class="fa fa-user-circle-o fa-2x"></i>
             <a (click)="logout()" class="mr-2"> {{ user.name | titlecase }} (Log Me Out) </a>
         </div>
@@ -14,6 +14,7 @@
         </ng-template>
     </nav>
     <div class="fixed-top">
+        <amg-loading></amg-loading>
         <amg-alert></amg-alert>
     </div>
 </header>
