@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
+import { AlertService } from 'src/app/shared/components/alert/alert.service';
 
 
 @Component({
@@ -19,11 +20,12 @@ export class SignInComponent implements OnInit, AfterViewInit {
         private authService: AuthService,
         private router: Router,
         private platformDetectorService: PlatformDetectorService,
-        private titleService: Title
+        private titleService: Title,
+        private alertService: AlertService
     ) {}
 
     ngOnInit(): void {
-        this.titleService.setTitle('Login - AngMigurumi');
+        // this.titleService.setTitle('Login - AngMigurumi');
         this.loginForm = this.formBuilder.group({
             userName: ['', Validators.required],
             password: ['', Validators.required]
@@ -49,7 +51,11 @@ export class SignInComponent implements OnInit, AfterViewInit {
             this.platformDetectorService.isPlatformBrowser() &&
             this.userNameInput.nativeElement.focus(); // Element from DOM
             console.log(err.error.message);
-            alert(err.error.message); // Msg on screen
+            this.alertService
+
+            .danger('User' + this.userNameInput.nativeElement.value
+            + ' could not be logged. Please try again. Error: '
+            + err.error.message, true); // Alert on screen
         });
     }
 }

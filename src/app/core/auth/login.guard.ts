@@ -5,20 +5,19 @@ import { User } from '../user/user';
 import { UserService } from '../user/user.service';
 
 @Injectable({providedIn: 'root'})
-export class LoginGuard implements CanActivate{
+export class LoginGuard implements CanActivate {
 
     constructor(
         private userService: UserService,
         private router: Router
-        ){}
-    
+        ) {}
+
     canActivate(
-        route: ActivatedRouteSnapshot, 
+        route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-        console.log('LoginGuard ACTIVATED!');
-        
-        if(this.userService.isLogged()){
-            this.router.navigate(['user', 
+
+        if (this.userService.isLogged()) {
+            this.router.navigate(['user',
             this.userService.getUserName()]);
             return false;
         }

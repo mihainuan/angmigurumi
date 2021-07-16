@@ -11,7 +11,7 @@ import { SignUpService } from './signup.service';
     templateUrl: './signup.component.html',
     providers: [ ExistingUserNameValidatorService ]
 })
-export class SignUpComponent implements OnInit, AfterViewInit{
+export class SignUpComponent implements OnInit, AfterViewInit {
 
     signupForm: FormGroup;
     @ViewChild('emailInput') emailInput: ElementRef<HTMLInputElement>;
@@ -22,26 +22,26 @@ export class SignUpComponent implements OnInit, AfterViewInit{
         private signUpService: SignUpService,
         private router: Router ,
         private platformDetectorService: PlatformDetectorService
-        ){
+        ) {
         this.ngOnInit();
     }
-    
+
     ngOnInit(): void {
         this.signupForm = this.formBuilder.group({
-            email:['', 
+            email: ['',
                 [
                     Validators.required,
                     Validators.email
                 ]
             ],
-            fullName:['', 
+            fullName: ['',
                 [
                     Validators.required,
                     Validators.minLength(2),
                     Validators.maxLength(40)
                 ]
             ],
-            userName:['', 
+            userName: ['',
                 [
                     Validators.required,
                     lowerCaseCustomValidator,
@@ -50,27 +50,29 @@ export class SignUpComponent implements OnInit, AfterViewInit{
                 ],
                 this.existingUserNameValidatorService.checkExistingUserName()
             ],
-            password:['', 
+            password: ['',
                 [
                     Validators.required,
                     Validators.minLength(6),
                     Validators.maxLength(12)
                 ]
             ],
-        })
+        });
     }
-    
+
     ngAfterViewInit(): void {
+        // tslint:disable-next-line: no-unused-expression
         this.platformDetectorService.isPlatformBrowser()
         && this.emailInput.nativeElement.focus();
     }
 
-    signup(){
+    signup() {
         const newUser = this.signupForm.getRawValue() as NewUser;
         this.signUpService
         .signUp(newUser)
         .subscribe(
-            () => this.router.navigate(['']))
-            err => console.log(err.message)
+            () => this.router.navigate(['']));
+            // tslint:disable-next-line: no-unused-expression
+            err => console.log(err.message);
     }
 }

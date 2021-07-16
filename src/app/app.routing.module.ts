@@ -20,20 +20,32 @@ const routes: Routes = [
     {
         path: 'user/:userName',
         component: PhotoListComponent,
-        resolve: { photos: PhotoListResolver}
+        resolve: { photos: PhotoListResolver },
+        data: {
+            title: 'Photos - AngMigurumi'
+        }
     },
     {
         path: 'p/add',
         component: PhotoFormComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: {
+            title: 'Photo Upload - AngMigurumi'
+        }
     },
     {
         path: 'p/:photoId',
-        component: PhotoDetailsComponent
+        component: PhotoDetailsComponent,
+        data: {
+            title: 'Photo Details - AngMigurumi'
+        }
     },
     {
         path: 'not-found',
-        component: NotFoundComponent
+        component: NotFoundComponent,
+        data: {
+            title: 'Page not Found - AngMigurumi'
+        }
     },
     {
         path: '**',
