@@ -1,8 +1,21 @@
 <header class="fixed-top">
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand"><strong>AngMIGURUMii</strong></a>
+        <a class="navbar-brand">
+        <i tabindex="0" 
+        (keyup.space)="menu.toggle()"
+        (click)="menu.toggle()" 
+        class="fa fa-bars mr-2"></i>
+        <strong>AngMIGURUMii</strong></a>
         
-        <div *ngIf="(user$ | async) as user; else login">
+        <amg-menu #menu>
+            <ul class="list-unstyled">
+                <li>
+                    <a showIfLogged [routerLink]="['p', 'add']">Upload Photo</a>
+                </li>
+            </ul>
+        </amg-menu>
+
+        <div *ngIf="(user$ | async ) as user; else login">
             <i class="fa fa-user-circle-o fa-2x"></i>
             <a (click)="logout()" class="mr-2"> {{ user.name | titlecase }} (Log Me Out) </a>
         </div>
@@ -14,6 +27,7 @@
         </ng-template>
     </nav>
     <div class="fixed-top">
+        <amg-loading></amg-loading>
         <amg-alert></amg-alert>
     </div>
 </header>
