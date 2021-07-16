@@ -8,9 +8,10 @@
         <strong>AngMIGURUMii</strong></a>
         
         <amg-menu #menu>
-            <ul>
-                <li>Menu 1</li>
-                <li>Menu 2</li>
+            <ul class="list-unstyled">
+                <li>
+                    <a showIfLogged [routerLink]="['p', 'add']">Upload Photo</a>
+                </li>
             </ul>
         </amg-menu>
 
