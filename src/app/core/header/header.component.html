@@ -5,7 +5,12 @@
         class="fa fa-bars mr-2"></i>
         <strong>AngMIGURUMii</strong></a>
         
-        <amg-menu #menu></amg-menu>
+        <amg-menu #menu>
+            <ul>
+                <li>Menu 1</li>
+                <li>Menu 2</li>
+            </ul>
+        </amg-menu>
 
         <div *ngIf="(user$ | async ) as user; else login">
             <i class="fa fa-user-circle-o fa-2x"></i>
